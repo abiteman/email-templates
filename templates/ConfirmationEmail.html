@@ -5,59 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Your Memory-Nest Account</title>
     <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1F2937; /* gray-900 */
-            background-color: #F9FAFB; /* gray-50 */
+        /* Modern CSS Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background-color: #F9FAFB;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
         .container {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 40px auto;
             background-color: #ffffff;
-            border-radius: 8px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
+        /* Header */
         .header {
-            background-color: #D97706; /* amber-600 */
+            background-color: #D97706;
             color: #ffffff;
-            padding: 20px;
+            padding: 32px 24px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                rgba(255,255,255,0.1) 100%);
+        }
+
         .header h1 {
             font-family: 'Lora', serif;
-            margin: 0;
-            font-size: 28px;
-        }
-        .content {
-            padding: 30px;
-            background-color: #FFF7ED; /* orange-50 */
-        }
-        .otp-code {
-            font-family: monospace;
             font-size: 32px;
-            letter-spacing: 4px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 32px;
+            background-color: #FFF7ED;
+        }
+
+        .content h2 {
+            color: #92400E;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #4B5563;
+            line-height: 1.7;
+        }
+
+        /* OTP Section */
+        .otp-container {
+            margin: 32px 0;
             text-align: center;
+        }
+
+        .otp-code {
+            font-family: 'SF Mono', 'Roboto Mono', monospace;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 8px;
+            color: #D97706;
             background-color: #ffffff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-            border: 2px dashed #D97706; /* amber-600 */
+            padding: 24px 32px;
+            border-radius: 12px;
+            border: 2px dashed #D97706;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
+
+        .otp-code::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #D97706, #F59E0B);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Footer */
         .footer {
-            background-color: #F3F4F6; /* gray-100 */
-            padding: 20px;
+            background-color: #F3F4F6;
+            padding: 24px;
             text-align: center;
-            font-size: 14px;
-            color: #6B7280; /* gray-500 */
         }
+
+        .footer p {
+            font-size: 14px;
+            color: #6B7280;
+            margin: 8px 0;
+        }
+
+        .footer a {
+            color: #D97706;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Time Badge */
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FEF3C7;
+            color: #92400E;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 16px 0;
+        }
+
+        .time-badge svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        /* Responsive Design */
         @media only screen and (max-width: 600px) {
             .container {
-                width: 100%;
+                margin: 0;
                 border-radius: 0;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
+            .otp-code {
+                font-size: 32px;
+                letter-spacing: 6px;
+                padding: 20px 24px;
             }
         }
     </style>
@@ -68,16 +186,26 @@
             <h1>Memory-Nest</h1>
         </div>
         <div class="content">
-            <h2 style="color: #92400E;">Confirm Your Email Address</h2>
+            <h2>Verify Your Email Address</h2>
             <p>Hello {{.Email}},</p>
-            <p>Thank you for signing up with Memory-Nest, where your cherished moments find a home. To complete your registration, please enter the following verification code on our website:</p>
-            <div class="otp-code">{{.Token}}</div>
-            <p>This code will expire in 10 minutes for security reasons. If you need a new code, please request one from our website.</p>
-            <p>If you didn't create an account with Memory-Nest, please ignore this email.</p>
+            <p>Welcome to Memory-Nest! To complete your registration and begin preserving your cherished memories, please enter this verification code on our website:</p>
+            
+            <div class="otp-container">
+                <div class="otp-code">{{.Token}}</div>
+            </div>
+
+            <p>If you didn't create an account with Memory-Nest, you can safely ignore this email.</p>
+
+            <div class="time-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Expires in 24 hours
+            </div>
         </div>
         <div class="footer">
             <p>&copy; 2024 Memory-Nest. All rights reserved.</p>
-            <p>Questions? Contact us at support@memory-nest.com</p>
+            <p>Questions? Contact us at <a href="mailto:support@memory-nest.com">support@memory-nest.com</a></p>
         </div>
     </div>
 </body>
