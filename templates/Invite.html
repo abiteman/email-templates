@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited to Join Memory-Nest</title>
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F2937; /* gray-900 */
+            background-color: #F9FAFB; /* gray-50 */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #D97706; /* amber-600 */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-family: 'Lora', serif;
+            margin: 0;
+            font-size: 28px;
+        }
+        .content {
+            padding: 30px;
+            background-color: #FFF7ED; /* orange-50 */
+        }
+        .button {
+            display: inline-block;
+            background-color: #D97706; /* amber-600 */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #B45309; /* amber-700 */
+        }
+        .footer {
+            background-color: #F3F4F6; /* gray-100 */
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #6B7280; /* gray-500 */
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Memory-Nest</h1>
+        </div>
+        <div class="content">
+            <h2 style="color: #92400E;">You're Invited to Join Memory-Nest!</h2>
+            <p>Hello {{ .Email }},</p>
+            <p>We're excited to invite you to Memory-Nest, where you can preserve and cherish your most precious memories. Click the button below to accept your invitation and set up your account:</p>
+            <a href="{{ .ConfirmationURL }}" class="button">Accept Invitation</a>
+            <p>If you did not expect this invitation, you can safely ignore this email.</p>
+            <p>This invitation link will expire in 24 hours for security reasons. If you need a new invitation, please contact us.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Memory-Nest. All rights reserved.</p>
+            <p>Questions? Contact us at <a href="mailto:support@memory-nest.com">support@memory-nest.com</a></p>
+        </div>
+    </div>
+</body>
+</html> 
